@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StackNavigator } from './StackNavigator';
-import SettingsScreen from '../screens/settings/SettingsScreen';
 import Tab1Screen from '../screens/tabs/Tab1Screen';
-import Tab2Screen from '../screens/tabs/Tab2Screen';
-import Tab3Screen from '../screens/tabs/Tab3Screen';
+// import SettingsScreen from '../screens/settings/SettingsScreen';
+// import Tab2Screen from '../screens/tabs/Tab2Screen';
+// import Tab3Screen from '../screens/tabs/Tab3Screen';
 import { globalColors } from '../theme/theme';
 import { Text } from 'react-native';
+import { TopBarNav } from './TopBarNav';
+import { useNavigation } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 const TabBarNav = () => {
+  
   return (
     <Tab.Navigator
     sceneContainerStyle = {{
@@ -41,11 +44,11 @@ const TabBarNav = () => {
       <Tab.Screen name="tab2" options={{
         title: 'Tab2',
         tabBarIcon:({color})=>(<Text style = {{color}}>Tab2</Text>)
-      }} component={Tab2Screen} />
+      }} component={TopBarNav} />
       <Tab.Screen name="tab3" options={{
         title: 'Tab3',
         tabBarIcon:({color})=>(<Text style = {{color}}>Tab3</Text>)
-      }} component={Tab3Screen} />
+      }} component={StackNavigator} />
     </Tab.Navigator>
   )
 }
